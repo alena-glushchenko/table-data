@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Веб-приложение для таблицы данных
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание решения
 
-## Available Scripts
+Приложение разработано с использованием React на клиентской стороне и Express на серверной стороне.
 
-In the project directory, you can run:
+На серверной стороне таблицу можно загружать как из файла в память, так и из базы данных, либо же статично загрузить существующий начальный CSV файл, 
+который будет прочитан и отображен без запроса к API. 
 
-### `npm start`
+Отображение сделано в виде таблицы с навигацией без перезагрузки страницы.
+Используются только первые 5 столбцов из предоставленного CSV файла.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Основные функции
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Отображение таблицы**: Данные как из CSV файла, так и DB отображаются в таблице.
+- **Навигация**: Пользователи могут переключаться между страницами таблицы без перезагрузки страницы.
+- **API**: Сервер предоставляет API для загрузки данных из CSV файла.
+- **Тестирование**: Все способы загрузки таблицы покрыты тестами.
+- **Контейнер**: Созданные docker файлы для ubuntu, собранные в единый контейнер.
 
-### `npm test`
+## Шаги для запуска приложения
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Клонируйте репозиторий:
+   ```bash
+   git clone git@github.com:alena-glushchenko/table-data.git
+   
+2. Проверьте, что у вас установлен [Docker Desktop в Ubuntu или Docker Engine](https://docs.docker.com/desktop/install/ubuntu/)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Убедитесь, что у вас есть начальный CSV файл (в папке **src/assets**), либо же сделайте запрос на конечную точку:
+- */api/load-db* для DB
+- */api/load-file* для загрузки файла
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Перейдите в корень проекта и запустите:
+   ```bash
+   docker-compose up --build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Перейдите по адресу [http://127.0.0.1:8085](http://127.0.0.1:8085) для запуска серверной части.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+6. Доступ к клиентской части осуществляется по [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
