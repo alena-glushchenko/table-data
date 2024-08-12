@@ -22,7 +22,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone git@github.com:alena-glushchenko/table-data.git
+   git clone git@github.com:glush-chenko/table-data.git
    
 2. Проверьте, что у вас установлен [Docker Desktop в Ubuntu или Docker Engine](https://docs.docker.com/desktop/install/ubuntu/)
 
